@@ -1,0 +1,33 @@
+﻿@page "/CSharpTest3"
+
+@using FrostSteelCorporation;
+@using FrostSteelCorporation.CSharp;
+@using System;
+@using System.Drawing;
+@using System.Drawing.Drawing2D;
+@using System.Windows;
+@using Microsoft.AspNetCore.Components.Web;
+
+
+    <div>
+         <img src="@WarriorimageSource">
+
+    </div>
+
+
+
+@for (var Warrior = 1; Warrior <= 1; Warrior++)
+{
+
+
+    var WarriorID = Warrior;
+    <button @onclick="()=>ShowImageWarrior(WarriorID)">Show Warrior @WarriorID</button>
+}
+@code{
+    private string WarriorimageSource;
+
+    private void ShowImageWarrior(int ID) {
+
+        WarriorimageSource = $"images/Warrior{ID}.png";
+    }
+}

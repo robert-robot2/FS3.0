@@ -1,0 +1,76 @@
+﻿@page "/"
+@namespace FrostSteelCorporation.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+
+
+    <title>Frost Steel Corporation</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/MyCss/Backgrounds.css" />
+    <link rel="stylesheet" href="~/MyCss/Calculon.css" />
+    <link rel="stylesheet" href="~/MyCss/NightmareEngine.css" />
+    <link rel="stylesheet" href="~/MyCss/Fonts.css" />
+    <link rel="stylesheet" href="~/MyCss/Menus.css" />
+    <link rel="stylesheet" href="~/MyCss/TicTacToe.css" />
+    <link rel="stylesheet" href="~/MyCss/Test.css" />
+
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="FrostSteelCorporation.styles.css" rel="stylesheet" />
+
+    <script src="_framework/blazor.server.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/Blazor.Extensions.Canvas/blazor.extensions.canvas.js"></script>
+
+      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+    <script src="~/js/JavaScript.js"></script>
+</head>
+
+  <div id="google_translate_element">
+   
+ 
+  <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+</div>
+
+
+<body style="background-color:rgba(0,0,0,1);">
+   
+  
+
+     <component type="typeof(App)" render-mode="ServerPrerendered" />
+
+   
+
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+
+  
+</body>
+</html>

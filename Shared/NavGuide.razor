@@ -1,0 +1,59 @@
+﻿
+
+
+
+<div class="navguide-toggler">
+  <NavGuide class=""href="">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Home
+                </NavGuide>
+
+</div>
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+    
+   
+
+
+
+
+
+
+@code {
+    
+    private bool collapseNavGuide = false;
+
+    private string NavMenuCssClass => collapseNavGuide? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavGuide = !collapseNavGuide;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

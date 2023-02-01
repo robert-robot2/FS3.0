@@ -1,0 +1,70 @@
+﻿@page "/CSharpTest6"
+
+
+@using FrostSteelCorporation.CSharpTest.CSharpTest6;
+
+@using System;
+@using System.Collections.Generic;
+
+
+<div class="IcySegoeWhite">Advanced C# Tut #1</div>
+       
+<div class="IcySegoeWhite">Create a Class Structure With Interface Capabilites</div>
+ <div class="IcySegoeWhite">Note: C# Namespaces and Classes Cannot be the Same Name or it will Not reference the Class via HTML</div>
+ 
+
+<div class="IcySegoeWhite">
+<NavLink class="nav-link" href="https://www.bing.com/videos/search?q=advanced+c%23+tutorials+youtube&docid=608042828144054494&mid=D92D7A88221F819CFB1BD92D7A88221F819CFB1B&view=detail&FORM=VIRE" Match="NavLinkMatch.All">
+                <span class="" aria-hidden="true"></span>Link to Tut!
+            </NavLink>
+        
+    </div>
+  <div class="IcySegoeWhite">1/30/2022</div>
+    <div class="IcySegoeWhite">Notes:</div>
+  <div class="IcySegoeWhite">The public string Meh when set to null and creating a string inside the class Does not work to display the Text Via HTML Button Click</div>
+  <div class="IcySegoeWhite">It works elsewise when using it directly through HTML Example link to CSharpTest </div>
+    <div class="IcySegoeWhite">this Tutorial Does work Via Console But How to Display the output into HTML?</div>
+      <div class="IcySegoeWhite">I can Get it to Display Into Console Via Button Click.</div>
+          <div class="IcySegoeWhite">$"Total Annual Salaries(including bonus):{totalSalaries}"</div>
+               <div class="IcySegoeWhite">I cant convert this to a string because it has a variable in a string......</div>
+ <div class="IcySegoeWhite">2/1/2022</div>
+ <div class="IcySegoeWhite">1.i can now get this to diaply setting a static string and decimal but that doesnt allow the total salaries to be displayed?</div>
+  <div class="IcySegoeWhite">2/11/2022</div>
+ <div class="IcySegoeWhite">1.Yeah Is working Via Click add Salaries!</div>
+
+  <div class="IcySegoeWhite">I put the string for display Annual Salaries inside void SchoolAdministration, relaized it wasnt making the reference!</div>
+  
+  <div class="IcySegoeWhite">The Console.Writeline isnt displaying the Styring Total Annual Salaries(including bonus): but i used HTML to make it work!</div>
+
+
+
+
+
+
+
+
+ <NavLink class="nav-link" href="CSharpTest" Match="NavLinkMatch.All">
+                <span class="" aria-hidden="true"></span>C Sharp Test
+            </NavLink>
+
+
+
+
+
+    <button class="IcySegoeWhite" @onclick="@cSharpTest69.SchoolAdministration">School Administration</button>
+    
+    <div class="IcySegoeBlue">Total Annual Salaries(including bonus):@CSharpTest69.totalSalaries</div>
+ 
+
+
+    
+@code{
+
+    
+
+
+
+    CSharpTest69 cSharpTest69 = new CSharpTest69();
+    
+}
+

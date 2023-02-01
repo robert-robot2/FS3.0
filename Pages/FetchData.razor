@@ -1,0 +1,46 @@
+﻿@page "/fetchdata"
+
+@using FrostSteelCorporation.Weather.Data
+@inject WeatherForecastService ForecastService
+
+<h1 class="IcySegoeWhite">Weather forecast</h1>
+
+<p class="IcySegoeWhite">This component demonstrates fetching data from a service.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="IcySegoeWhite">Date</th>
+                <th class="IcySegoeWhite">Temp. (C)</th>
+                <th class="IcySegoeWhite">Temp. (F)</th>
+                <th class="IcySegoeWhite">Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td class="IcySegoeWhite">@forecast.Date.ToShortDateString()</td>
+                    <td class="IcySegoeWhite">@forecast.TemperatureC</td>
+                    <td class="IcySegoeWhite">@forecast.TemperatureF</td>
+                    <td class="IcySegoeWhite">@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}

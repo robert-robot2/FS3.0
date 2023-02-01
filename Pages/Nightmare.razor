@@ -1,0 +1,150 @@
+﻿@page "/Nightmare"
+@using System;
+@using System.Drawing;
+@using FrostSteelCorporation;
+@using FrostSteelCorporation.NightmareEngine;
+@using FrostSteelCorporation.NightmareEngine.Enums;
+@using FrostSteelCorporation.NightmareEngine.Models;
+@using System.Windows.Forms;
+
+<p class="IcySegoeWhite">Hi!</p>
+
+
+@if (!port.GameComplete)
+{
+    <h2 >@port.GameBegin's Turn!</h2>
+}
+else
+{
+    <h2 ><button class="btn btn-success" @onclick="@(() => port.Reset())">Reset</button></h2>
+}
+<p class="IcySegoeWhite">WHAT THE FUCK IS THIS CLUSTERFUCKER RIGHT????</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="NightmareViewport" style="z-index:1;">
+    <!--   <img src="/images/Objects/SnowpixelBG002.png" width="1840"height="920" title="BG"style="position:absolute;top:320px;left:40px;"/> -->
+         
+  @for (int i = 0; i < 9; i++)
+
+  {
+
+    <div class="NightmareColumn"style="z-index:1;">
+          @for (int j = 0; j < 9; j++)
+
+          { int x = i;
+            int y = j;
+
+
+
+
+
+        
+        
+        <div class="PlayerPiece @port.Port[i,j].Style.ToString().ToLower()" @onclick="@(() => port.PieceClicked(x,y))"
+                     style=""></div>
+
+                     
+          }
+         
+         
+    </div>
+
+  }
+          
+  
+  
+  
+            <svg width="200" height="200">
+                    <rect x="100"y="100"width="200" height="200" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" /><animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="rotate"
+                          from="0 60 70"
+                          to="360 60 70"
+                          dur="1.0s"
+                          repeatCount="indefinite"/>
+                </svg>
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!--    <img src="/Warrior.png" width="64"height="64" title="Warrior"style="position:absolute;top:512px;left:1080px;"/>-->
+         
+      <!--  <img src="/BlackMageT001.png" width="64"height="64" title="Mage"style="position:absolute;top:384px;left:920px;"/>   -->
+           <!--   <img src="/images/Objects/SnowTree0012.png" width="256"height="256" title="Tree"style="position:absolute;top:624px;left:1080px;"/>   -->
+
+    
+</div>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="IcySegoeWhite">In Development</div>
+
+
+
+
+
+
+
+@code{
+
+
+    Viewport port = new Viewport();
+
+}
+
+
+
+
+
+
+
+@code{
+    
+
+
+
+        async void ShowRect(PaintEventArgs e) {
+
+        Pen blackPen= new Pen(Color.Black,3);
+        Rectangle rect= new Rectangle(0, 0, 200, 200);
+        e.Graphics.DrawRectangle(blackPen,rect);
+    }
+}
+
+
+
+

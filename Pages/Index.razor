@@ -1,0 +1,250 @@
+﻿@page "/"
+
+@using FrostSteelCorporation;
+@using FrostSteelCorporation.Index;
+@using FrostSteelCorporation.Index.Models;
+
+@inject IndexAnimationService iAnimationService;
+@inject IndexBezierCurveService ibcs;
+
+@using Blazor.Extensions;
+@using Blazor.Extensions.Canvas;
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+@using Microsoft.JSInterop;
+@inject IJSRuntime jsRuntime
+
+
+
+
+@code{
+#pragma warning disable
+}
+
+
+
+
+    <style>
+        .content.px-4{
+            padding:0px !important;
+        }
+    </style>
+
+
+
+
+<div id="MainCanvas" class="CanvasIndexMain">
+
+<BECanvas Width="1080" Height="400" @ref="MaincanvasReference" ></BECanvas>
+
+
+</div>
+
+
+@code{
+    private List<IndexAnimation> Animations = new List<IndexAnimation>();
+
+    private Canvas2DContext context;
+
+    protected BECanvasComponent MaincanvasReference;
+
+    object BlueRect = "rgba(14,26,48,.3)";
+    string MainFont ="48px Segoe Script";
+    private bool loopback = false;
+    
+
+    protected override async Task OnAfterRenderAsync(bool Render)
+    {
+        
+        context = await MaincanvasReference.CreateCanvas2DAsync();
+
+
+
+
+        Animate();
+
+
+
+
+    }
+
+
+
+
+
+
+    async Task SetInterval(Action action, TimeSpan timeout)
+    {
+        Task.Delay(timeout).ConfigureAwait(true);
+
+        action();
+
+        SetInterval(action, timeout);
+    }
+
+
+
+
+
+    async void Animate()
+    {
+        
+        await context.SetFillStyleAsync("#000000");
+        await context.FillRectAsync(0, 0, 1080, 400);
+        
+   
+
+        MainTextvoid();
+        BlueRectvoid();
+        ShowImageWarrior();
+
+        
+        bool allcomplete = true;
+
+        foreach (IndexAnimation a in Animations)
+        {
+            iAnimationService.Animate(a);
+            iAnimationService.Draw(context,a);
+            if (a.indexPercent != 100 && a.indexPercent !=0) allcomplete = false;
+        }
+
+        if (allcomplete && loopback)
+            Animations.ForEach(a => a.indexSpeed *= -1);
+
+    }
+
+
+
+
+    async void MainTextvoid()
+
+
+
+    {
+
+        await context.SetFontAsync(MainFont);
+        await context.SetStrokeStyleAsync("white");
+        await context.StrokeTextAsync("Frost Steel Corporation", 10, 100);
+
+
+
+
+    }
+    async void BlueRectvoid() {  
+
+       await context.SetFillStyleAsync(BlueRect);
+
+       await context.FillRectAsync(30, 150, 300, 100);
+
+
+    }
+
+
+    async void ShowImageWarrior() { 
+   
+      
+    }
+
+
+
+             
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="IcySegoeWhite">Hi!</div>
+<div class="IcySegoeWhite">In the Words of the Starcraft SCV "This is crazy man...."</div>
+
+<div class="IcySegoeWhite">Tools: VS 2019, Blender, Gimp</div>
+
+<div class="IcySegoeWhite">Resources: Blazor Tictactoe and Dungeon Rpg found on github</div>
+
+<div class="IcySegoeWhite">W3 schools for html, Microsoft docs for ya....</div>
+
+
+
+
+<div class="IcySegoeWhite">Attempting to Learn C Sharp with Html for this Site Enjoy</div>
+
+<div class="IcySegoeWhite">Current Goal is to Get a working C sharp Viewport, with a moving image that has up down left right control.</div>
+
+<div class="IcySegoeWhite">1. The basics of the viewport are setup.</div>
+
+
+<div class="IcySegoeWhite">1/5/22 5:13pm</div>
+
+<div class="IcySegoeWhite">2. I have Images loaded thru C# via CSS Via TicTacToe Example! Enjoy the Nightmare creation lol...</div>
+<div class="IcySegoeWhite">Note 2.a. The CSS for loading the image has to be lower cased Warrior->warrior for the C# to recognize the file.</div>
+<div class="IcySegoeWhite">1/8/22 3:27pm</div>
+
+<div class="IcySegoeWhite">1.The main Canvas Animation on Index is alot less glitchy by adding async void to restart ToggleLoopback and TogglePaths</div>
+<div class="IcySegoeWhite">2.Removing ClearRectAsnyc From Animate() also created less Glitches It is running Alot smoother now!</div>
+<div class="IcySegoeWhite">I shall see what else i can adjust i still get a call to canvas glitch and some other errors with SetStrokeAsync for Main non moving Text</div>
+<div class="IcySegoeWhite">3. this part of the code specifically causes the screen flash glitch so it seems but what to change about it.</div>
+<div class="IcySegoeWhite">in comparision to the Animate Master Demo of WebAssembly vs. My Server</div>
+
+<div class="IcySegoeWhite">
+
+        await Task.Delay(0).ContinueWith(async a => {
+            await SetInterval(() => Animate(),TimeSpan.FromSeconds(.01));
+
+        });
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="IcySegoeWhite">Moo!</div>
+
+
+<div class="IcySegoeWhite">Random Background of the Day made from texture pieces of the Console in the Herrara in Cyberpunk 2077!</div>
+<div class="IcySegoeWhite">Modified with Gimp!</div>
+      
+<div class="IcySegoeWhite">You know you want to click the random link!</div>
+ 
+
+<div class="IcySegoeWhite">
+<NavLink class="nav-link" href="https://www.youtube.com/watch?v=XINI8Jv2Wis&list=RDVh5oswAwb8k&index=5" Match="NavLinkMatch.All">
+                <span class="" aria-hidden="true"></span>"Sulphur"?"
+            </NavLink>
+        
+    </div>
+            <div class="BlankViewport" style="z-index:1;">
+ 
+
+            <div class="BlankColumn"style="z-index:1;">
+       
+          </div>
+    </div>
+
+
+
+
+

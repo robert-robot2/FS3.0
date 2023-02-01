@@ -1,0 +1,287 @@
+﻿@page "/CSharpTest"
+
+@using FrostSteelCorporation;
+@using FrostSteelCorporation.CSharp;
+@using System;
+@using System.Drawing;
+@using System.Drawing.Drawing2D;
+@using System.Windows;
+@using Microsoft.AspNetCore.Components.Web;
+
+
+
+<p class="IcySegoeWhite">11/26/2021</p>
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg><br/>
+
+
+
+<button @onclick="OnYes">Yes! Display WriteLine With .razor</button>
+
+<p class="IcySegoeWhite">This Displays thru the Debug console if changed form ISS Express to Project</p>
+ <br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg><br/>
+
+<button @onclick="@classTest.Statement">A different attempt to write console line by accessing the Class file</button>
+   
+<p class="IcySegoeWhite">This does Work making a public void!</p>
+ 
+<p class="IcySegoeWhite">I finally learned how to link the c sharp classes to HTML Woots!</p>
+ 
+
+
+
+
+
+
+@code{
+
+
+    ClassTest classTest = new ClassTest();
+
+}
+
+
+
+
+
+
+@code {
+
+
+
+
+
+    private void OnYes() {
+
+        Console.WriteLine("Hello!");
+
+    }
+
+}
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+<div class="IcySegoeWhite">This So Begins the Story of Some Random Warrior!</div>
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+<div class="IcySegoeWhite"@onclick="WriteThis">Do you want to Start the Story? Click the Text!</div>
+
+
+
+
+<div class="IcySegoeWhite">@DisplayText</div>
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+<div class="IcySegoeWhite"@onclick="WriteThis01">Part 2 of Story....</div>
+
+
+
+
+<div class="IcySegoeWhite">@DisplayText01</div>
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+
+<div class="IcySegoeWhite"@onclick="WriteThis02">Part 3 of Story!</div>
+
+
+
+<div class="IcySegoeWhite">@DisplayText02</div>
+
+
+
+
+
+
+@code{
+
+
+    public string DisplayText = null;
+    public string DisplayText01 = null;
+    public string DisplayText02 = null;
+
+ 
+
+    private void WriteThis() {
+
+
+
+
+        DisplayText = ("Welcome to the Story of the Random Warrior!");
+      
+        Console.WriteLine(DisplayText);
+
+
+
+
+    }
+
+    
+    private void WriteThis01() {
+
+
+
+        DisplayText01 = ("The Night was a Dark and dreary stormy night!");
+
+      
+        Console.WriteLine(DisplayText01);
+
+
+
+
+    }
+     
+    private void WriteThis02() {
+
+
+
+        DisplayText02 = ("The Warrior was walking alone until he stumbled upon female!");
+
+      
+        Console.WriteLine(DisplayText02);
+
+
+
+
+    }
+
+
+}
+
+<p class="IcySegoeWhite">This Writes to the Console and Writes the Console to HTML!</p>
+ 
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+
+<p class="IcySegoeWhite">12/6/2021 9:23 AM</p>
+ 
+<p class="IcySegoeWhite">This button will display 3 Images Via C Sharp into HTML page!</p>
+ 
+
+@if (imageSource is not null)
+{
+    <div>
+         <img src="@imageSource">
+
+    </div>
+
+
+
+}
+
+
+@for (var i = 1; i <= 3; i++)
+{
+
+
+    var imageID = i;
+    <button @onclick="() => ShowImage(imageID)">Image @imageID</button>
+}
+@code{
+    private string imageSource;
+
+    private void ShowImage(int ID) {
+
+        imageSource = $"images/Warrior{ID}.png";
+    }
+}
+
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+<p class="IcySegoeWhite">12/6/2021 9:23 AM</p>
+ 
+<p class="IcySegoeWhite">Display Rect?!!?!?</p>
+ 
+
+
+
+
+
+
+
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+<p class="IcySegoeWhite">12/7/2021 7:43 PM</p>
+ 
+<p class="IcySegoeWhite">Yeah..</p>
+<p class="IcySegoeWhite">Blazor Point click coord test example!</p>
+<p class="IcySegoeWhite">How to create a differntation between the Namespaces? x; y;</p>
+ <p class="IcySegoeWhite">When i add Windows.System.Forms for PaintEventArgs i get Ambiguity with Microsoft.Aspnetcore.Componenets.web</p>
+  <p class="IcySegoeWhite">Also I get a method to event callback error when try to use MousePointArgs with Windows.System.Forms</p>
+  <p class="IcySegoeWhite">Point Being i Need PaintEvent Args for System.drawing So how to Make that work??????!?!??NANAINIWNFWIFNIN WTFTFWTFW</p>
+   <p class="IcySegoeWhite">A way to temporariliy bypass this is to Keep MousePointerArgs and PaintEvent Args on Seperate .Razor</p>
+ 
+  <p class="IcySegoeWhite">Creating namespace x; y; x.Test test= new Test(); to seperate Amibuity between Paint and Mouse</p>
+
+
+@for (var i = 0; i < 4; i++) {
+
+    <button @onclick="ReportPL">Where Mouse Pointer Is?</button>
+
+   
+
+}
+ 
+
+<p>@MPM</p>
+
+@code{
+
+
+
+
+
+   
+        string MPM;
+        void ReportPL(MouseEventArgs e2) {
+
+
+            MPM = $"Mouse Coord:{e2.ScreenX}:{e2.ScreenY}";
+        }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="IcySegoeWhite">Random Text to be filled!</p>
+ 

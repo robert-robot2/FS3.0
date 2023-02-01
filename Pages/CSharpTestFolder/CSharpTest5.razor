@@ -1,0 +1,24 @@
+﻿@page "/CSharpTest5"
+
+
+@using System;
+@using System.Drawing;
+@using FrostSteelCorporation;
+@using FrostSteelCorporation.NightmareEngine;
+@using FrostSteelCorporation.NightmareEngine.Enums;
+@using FrostSteelCorporation.NightmareEngine.Models;
+@using System.Windows.Forms;
+
+
+@code{
+    
+
+    void ShowRect(PaintEventArgs e) {
+
+        Pen blackPen= new Pen(Color.Black,3);
+        Rectangle rect= new Rectangle(0, 0, 200, 200);
+        e.Graphics.DrawRectangle(blackPen,rect);
+    }
+}
+
+

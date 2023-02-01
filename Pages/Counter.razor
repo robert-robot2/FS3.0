@@ -1,0 +1,47 @@
+﻿@page "/counter"
+
+<h1 class="IcySegoeWhite">Counter</h1>
+
+
+
+
+
+<p class="IcySegoeWhite">Current count Add: @Count</p>
+
+<button class="btn btn-primary IcySegoeWhite" @onclick="IncrementCount">Click me</button>
+
+
+
+
+
+
+
+@code {
+    private int Count = 0;
+
+    private void IncrementCount()
+    {
+        Count++;
+    }
+}
+<p class="IcySegoeWhite">Current count Subtract: @Subtract</p>
+
+<button class="btn btn-primary IcySegoeWhite" @onclick="IncrementCountSubtract">Click me</button>
+
+
+
+
+
+
+
+@code {
+    private int Subtract = 0;
+
+    private void IncrementCountSubtract()
+    {
+        Subtract--;
+    }
+}
+
+
+

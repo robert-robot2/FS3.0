@@ -1,0 +1,93 @@
+﻿@page "/HTML"
+@using FrostSteelCorporation;
+
+
+
+
+
+
+<div class="IcySegoeWhite">HTML Learning</div>
+
+
+
+
+
+
+<a class="IcySegoeWhite" href="https://www.w3schools.com/TAGs/tag_output.asp">W3 schools input output</a>
+
+
+
+
+<form class="IcySegoeBlack" oninput="x1.value=Texta.value" style="overflow:scroll;">
+  
+    
+
+
+    
+    <div class="IcySegoeWhite">Output for typed:</div>
+    <div class="ChatboxView">
+      <div class="ChatboxColumn" >
+    
+        
+        
+        
+        <output class="IcySegoeBlack" name="x1" for="Texta"uiactions="scroll" ></output><br />
+  </div>
+  </div>
+  
+   <div class="IcySegoeWhite">Input Text!</div>
+    
+  <input class="IcySegoeBlack"  id="Texta"value=""  >
+   
+  
+</form>
+
+
+
+
+<form class="IcySegoeBlack" >
+  
+    
+
+
+    
+    <div class="IcySegoeWhite">Output for typed:</div>
+    <div class="ChatboxView">
+      <div class="ChatboxColumn" >
+    
+        
+        
+        
+        <output class="IcySegoeBlack" name="x1" for="Texta" id="TextOutput"></output><br />
+  </div>
+  </div>
+  
+   <div class="IcySegoeWhite">Input Text!</div>
+    
+  <input class="IcySegoeBlack"  id="Texta"value=""  >
+   
+    <input type="submit" value="Send" onsubmit="FormData">
+</form>
+
+
+
+
+
+
+
+
+
+
+<form action="/HTML">
+
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+
+  <label for="lname">Last name:</label>
+
+  <input type="text" id="lname" name="lname"><br><br>
+
+
+  <input type="submit" value="Submit">
+
+</form>

@@ -1,0 +1,177 @@
+﻿@page "/CalculonChronicles"
+
+@using FrostSteelCorporation.Calculon;
+
+@using System;
+
+@using System.Collections.Generic;
+
+
+
+
+<div class="IcySegoeWhite">12/8/21 9:38PM</div>
+<div class="IcySegoeWhite">Blah Blah Blah!</div>
+<div class="IcySegoeWhite">i dont know how to make the clear button tie into the input boxes....</div>
+<div class="IcySegoeWhite">I actually Made a Working Clear button somehow lol..</div>
+<div class="IcySegoeWhite"> clearNumbers = (numberSource)=null;</div>
+<div class="IcySegoeWhite"> relating this to the inputs also</div>
+<div class="IcySegoeWhite">Other Goals to Complete Fully Functional Calculon Ultimate!</div>
+<div class="IcySegoeWhite">1. Multiple Input Through Buttons to Input, Only one Number will show through buttons Should Cascade.</div>
+<div class="IcySegoeWhite">2. Making a Single Input Box that Can Do Math Similiar to a Regular Calculator and Multiple Equations. </div>
+<div class="IcySegoeWhite">3. Making More Advanced Classes for Add multiply subtract divide equal Function instead of auto equate.</div>
+
+<div class="IcySegoeWhite">12/12/21 12:56pm</div>
+<div class="IcySegoeWhite">1. added necessary buttons </div>
+<div class="IcySegoeWhite">2. This crazy bruh.... </div>
+
+<a href="https://freestocktextures.com/texture/silver-brick-wall,357.html">Source for Texture</a>
+<a  href="https://stackoverflow.com/questions/66697977/call-multiple-functions-using-onclick-in-blazor-web-pages">Useful code piece to add Multiple Main to onclick!</a>
+  <p class="IcySegoeWhite">You Can Type Your Number Via KeyBoard or Use buttons for basic 1 Number Input!
+            </p>
+
+
+<div class="containerCalc" >
+    
+    <img class="shadow"src="/SilverWallVertical.png">
+ 
+  
+   
+       
+    <div>
+    
+       
+        <div class="IcySegoeRedBlack FirstText">First Number Box</div>
+        
+    
+        <input class="CalcBoxInput IcySegoeBlue FirstBox" id="Box1"placeholder="Enter First Number" @bind-value="@Calculon7.numberSource" />
+    
+        
+        <div class="IcySegoeRedBlack SecondText">Second Number Box</div>
+        
+        <input class="CalcBoxInput IcySegoeBlue SecondBox" id ="Box2"placeholder="Enter Second Number"  @bind-value="@Calculon7.numberSource2"/>
+    
+        
+        <div>
+            <button class="Calcbtn AddBox IcySegoeDefault"@onclick="@Calculon7.AddNumbers1">Add (+)</button>
+            <button class="Calcbtn SubtractBox IcySegoeDefault"@onclick="@Calculon7.SubtractNumbers1">Subtract (-)</button>
+            </div>
+        <div>
+            <button class="Calcbtn DivideBox IcySegoeDefault"@onclick="@Calculon7.DivideNumbers1">Divide (/)</button>
+            <button class="Calcbtn MultiplyBox IcySegoeDefault"@onclick="@Calculon7.MultiplyNumbers1">Multiply (*)</button>
+        </div>
+        
+        
+  
+        <div class="IcySegoeRedBlack Number1Box">Input For First Number Box
+        
+        
+        <div>
+
+          @for (var i = 0; i <= 9; i++)
+          {
+              var NumberID = i;
+            
+                    <button class="Calcbtn"@onclick="() => Calculon7.AllNumbers(NumberID)">@NumberID</button>
+             }
+
+        </div>
+         </div>
+         <div class="IcySegoeRedBlack Number2Box">Input For Second Number Box
+        
+
+         <div>
+          @for (var j = 0; j <= 9; j++)
+                { var Number2ID2 = j;
+                    <button  class="Calcbtn"@onclick="() => Calculon7.AllNumbers2(Number2ID2)">@Number2ID2</button>
+    
+                }
+   
+         </div>
+         </div>
+        
+        
+        <button class="Calcbtn IcySegoeGreen ClearBox" @onclick="@Calculon7.ClearNumbers">Clear</button>
+       
+          <button class="Calcbtn IcySegoeGreen DecimalBox" @onclick="@Calculon7.DecimalNumbers">.</button>
+       
+          <button class="Calcbtn IcySegoeGreen EqualsBox" @onclick="@Calculon7.EqualsNumbers">=</button>
+       
+
+
+     
+
+    <input class="CalcBoxInput IcySegoeWhite TotalBox" style="font-size:150%;" placeholder="Total"@bind="@Calculon7.finalResult1">
+    
+    </div>
+    
+   
+       
+</div>
+ 
+           
+@code
+{
+
+  
+
+    Calculon7 calculon7 = new Calculon7();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+
+
+
+
+
+
+
+<div class="IcySegoeWhite">Code Chunks to build with!</div>
+
+     <form oninput="@Calculon7.finalResult1">
+            <input type="number" id="" placeholder="Enter First Number" @bind="@Calculon7.numberSource">
+            <input type="number" id=""placeholder="Enter Second Number" @bind="@Calculon7.numberSource2" >
+            <output name="" for="">=@Calculon7.finalResult1</output>
+            </form>
+
+
+ <form oninput="x=a+b">
+<input type="range" id="a" value="50">
+<input type="number" id="b" value="25">
+<output name="x" for="a b"></output>
+</form>
+
+
+
+
+
+<div class="IcySegoeWhite">Random box with number for to add to Calculon!</div>
+
+ <label for="FNumber">Enter First Number!</label>
+ 
+
+ <input type="number" id="FNumber" name="FNumber">
+
+

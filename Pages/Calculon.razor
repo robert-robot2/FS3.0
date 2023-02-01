@@ -1,0 +1,875 @@
+﻿@page "/Calculon"
+@using FrostSteelCorporation;
+@using FrostSteelCorporation.Calculon;
+
+@using System;
+@using ClassLibrary1;
+@using System.Collections.Generic;
+
+
+
+
+<div class="IcySegoeWhite">C sharp Caluclator build Attempt fun with Blazor C# HTML!</div>
+
+<div class="IcySegoeWhite">This Page is kinda Broken in testing Phases!</div>
+<div class="IcySegoeWhite">I think the Consoles Freeze becaus ei have to many programs in one! Maybe?</div>
+
+
+<div class="IcySegoeWhite">Resource!</div>
+
+<a class="IcySegoeWhite" href="https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2022">C sharp Calculator microsoft</a>
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+<div class="IcySegoeWhite">Click Button to add 1+2 with C Sharp!</div>
+
+
+<div class="IcySegoeWhite">1 + 2=@Total</div>
+
+
+<button @onclick="Add12">1+2=?</button>
+
+
+
+
+
+
+@code{
+
+    private int Total = 0;
+
+
+    private void Add12() {
+
+
+
+
+        int a = 1;
+        int b = 2;
+        Total=a+b;
+
+
+
+
+    }
+
+
+
+}
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+<div class="IcySegoeWhite">1 +2 added in Console window!</div>
+
+
+<button @onclick="Add12Console">1+2=?</button>
+
+
+
+
+
+
+@code{
+
+
+
+    private void Add12Console() {
+
+
+
+
+        int a = 1;
+        int b = 2;
+        Console.WriteLine(a+b);
+
+
+
+    }
+
+
+
+}
+<br />
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+<div class="IcySegoeWhite">Click Button to Acces C Sharp Calc in Console!</div>
+
+
+<div class="IcySegoeWhite">@CalcZero</div>
+
+
+<button @onclick="Calculator">Calculon</button>
+
+
+
+
+
+
+@code{
+
+        private int CalcZero = 0;
+
+
+        public void Calculator() {
+
+
+
+
+        int num1 = 0;
+        int num2 = 0;
+
+        // Display title as the C# console calculator app.
+        Console.WriteLine("Console Calculator in C#\r");
+        Console.WriteLine("------------------------\n");
+
+            // Ask the user to type the first number.
+            Console.WriteLine("Type a number, and then press Enter");
+            num1 = Convert.ToInt32(Console.ReadLine());
+
+            // Ask the user to type the second number.
+            Console.WriteLine("Type another number, and then press Enter");
+            num2 = Convert.ToInt32(Console.ReadLine());
+
+            // Ask the user to choose an option.
+            Console.WriteLine("Choose an option from the following list:");
+            Console.WriteLine("\ta - Add");
+            Console.WriteLine("\ts - Subtract");
+            Console.WriteLine("\tm - Multiply");
+            Console.WriteLine("\td - Divide");
+            Console.Write("Your option? ");
+
+            // Use a switch statement to do the math.
+            switch (Console.ReadLine())
+            {
+                case "a":
+                    Console.WriteLine($"Your result: {num1} + {num2} = " + (num1 + num2));
+                    break;
+                case "s":
+                    Console.WriteLine($"Your result: {num1} - {num2} = " + (num1 - num2));
+                    break;
+                case "m":
+                    Console.WriteLine($"Your result: {num1} * {num2} = " + (num1 * num2));
+                    break;
+                case "d":
+                    Console.WriteLine($"Your result: {num1} / {num2} = " + (num1 / num2));
+                    break;
+            }
+    // Wait for the user to respond before closing.
+    Console.Write("Press any key to close the Calculator console app...");
+            Console.ReadKey();
+
+
+    }
+
+
+
+}
+
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+<div class="IcySegoeWhite">Click Button to Acces C Sharp Calc in Console! butts this time the upgraded not Bugged out one!</div>
+
+
+<div class="IcySegoeWhite">@Calc2Zero</div>
+
+
+<button @onclick="Calculator2">Calculon Part 2! Revenge of the Robot Family or something!</button>
+
+@code{
+
+    private int Calc2Zero = 0;
+
+
+   
+        public static double DoOperation(double num1, double num2, string op)
+        {
+            double result = double.NaN; // Default value is "not-a-number" which we use if an operation, such as division, could result in an error.
+
+            // Use a switch statement to do the math.
+            switch (op)
+            {
+                case "a":
+                    result = num1 + num2;
+                    break;
+                case "s":
+                    result = num1 - num2;
+                    break;
+                case "m":
+                    result = num1 * num2;
+                    break;
+                case "d":
+                    // Ask the user to enter a non-zero divisor.
+                    if (num2 != 0)
+                    {
+                        result = num1 / num2;
+                    }
+                    break;
+                // Return text for an incorrect option entry.
+                default:
+                    break;
+            }
+            return result;
+        }
+
+    
+   
+        public void Calculator2()
+        {
+            bool endApp = false;
+            // Display title as the C# console calculator app.
+            Console.WriteLine("Console Calculator in C#\r");
+            Console.WriteLine("------------------------\n");
+
+            while (!endApp)
+            {
+                // Declare variables and set to empty.
+                string numInput1 = "";
+                string numInput2 = "";
+                double result = 0;
+
+                // Ask the user to type the first number.
+                Console.Write("Type a number, and then press Enter: ");
+                numInput1 = Console.ReadLine();
+
+                double cleanNum1 = 0;
+                while (!double.TryParse(numInput1, out cleanNum1))
+                {
+                    Console.Write("This is not valid input. Please enter an integer value: ");
+                    numInput1 = Console.ReadLine();
+                }
+
+                // Ask the user to type the second number.
+                Console.Write("Type another number, and then press Enter: ");
+                numInput2 = Console.ReadLine();
+
+                double cleanNum2 = 0;
+                while (!double.TryParse(numInput2, out cleanNum2))
+                {
+                    Console.Write("This is not valid input. Please enter an integer value: ");
+                    numInput2 = Console.ReadLine();
+                }
+
+                // Ask the user to choose an operator.
+                Console.WriteLine("Choose an operator from the following list:");
+                Console.WriteLine("\ta - Add");
+                Console.WriteLine("\ts - Subtract");
+                Console.WriteLine("\tm - Multiply");
+                Console.WriteLine("\td - Divide");
+                Console.Write("Your option? ");
+
+                string op = Console.ReadLine();
+
+                try
+                {
+                    result = DoOperation(cleanNum1, cleanNum2, op);
+                    if (double.IsNaN(result))
+                    {
+                        Console.WriteLine("This operation will result in a mathematical error.\n");
+                    }
+                    else Console.WriteLine("Your result: {0:0.##}\n", result);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Oh no! An exception occurred trying to do the math.\n - Details: " + e.Message);
+                }
+
+                Console.WriteLine("------------------------\n");
+
+                // Wait for the user to respond before closing.
+                Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
+                if (Console.ReadLine() == "n") endApp = true;
+
+                Console.WriteLine("\n"); // Friendly linespacing.
+            }
+            return;
+
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+<div class="IcySegoeWhite">C# Calc with Class Library!</div>
+
+
+<div class="IcySegoeWhite">@Calc3Zero</div>
+
+
+<button @onclick="Calculon3">Calculon Part 3! Kill All Humans 10001001 10100010 !</button>
+
+
+
+
+@code{
+    private int Calc3Zero = 0;
+    static void Calculon3()
+    {
+        bool endApp = false;
+        // Display title as the C# console calculator app.
+        Console.WriteLine("Console Calculator in C#\r");
+        Console.WriteLine("------------------------\n");
+
+        Calculon3 calculon3 = new Calculon3();
+        while (!endApp)
+        {
+            // Declare variables and set to empty.
+            string numInput1 = "";
+            string numInput2 = "";
+            double result = 0;
+
+            // Ask the user to type the first number.
+            Console.Write("Type a number, and then press Enter: ");
+            numInput1 = Console.ReadLine();
+
+            double cleanNum1 = 0;
+            while (!double.TryParse(numInput1, out cleanNum1))
+            {
+                Console.Write("This is not valid input. Please enter an integer value: ");
+                numInput1 = Console.ReadLine();
+            }
+
+            // Ask the user to type the second number.
+            Console.Write("Type another number, and then press Enter: ");
+            numInput2 = Console.ReadLine();
+
+            double cleanNum2 = 0;
+            while (!double.TryParse(numInput2, out cleanNum2))
+            {
+                Console.Write("This is not valid input. Please enter an integer value: ");
+                numInput2 = Console.ReadLine();
+            }
+
+            // Ask the user to choose an operator.
+            Console.WriteLine("Choose an operator from the following list:");
+            Console.WriteLine("\ta - Add");
+            Console.WriteLine("\ts - Subtract");
+            Console.WriteLine("\tm - Multiply");
+            Console.WriteLine("\td - Divide");
+            Console.Write("Your option? ");
+
+            string op = Console.ReadLine();
+
+            try
+            {
+                result = calculon3.DoOperation(cleanNum1, cleanNum2, op);
+                if (double.IsNaN(result))
+                {
+                    Console.WriteLine("This operation will result in a mathematical error.\n");
+                }
+                else Console.WriteLine("Your result: {0:0.##}\n", result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Oh no! An exception occurred trying to do the math.\n - Details: " + e.Message);
+            }
+
+            Console.WriteLine("------------------------\n");
+
+            // Wait for the user to respond before closing.
+            Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
+            if (Console.ReadLine() == "n") endApp = true;
+
+            Console.WriteLine("\n"); // Friendly linespacing.
+        }
+        return;
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+<div class="IcySegoeWhite">So i Finally GOT console.writeline to Display in HTML, this took me SO LONG to figure out ROFLcopters!</div>
+
+
+<div class="IcySegoeWhite">Well So Creating a public string DisplayText=null; then Display Text =("string"),then Console.writleline(DisplayText)</div>
+
+
+<div class="IcySegoeWhite">I find this to be very interesting i tried to create var DisplayText first as in java but removing the var allowed the console to write into html!</div>
+<div class="IcySegoeWhite">the Learning curve on this is ridiculous!</div>
+<div class="IcySegoeWhite">As A side goal i wanted to write the entire blazor site in c Sharp :) thought i would be intersting!</div>
+
+
+
+
+
+<div class="IcySegoeWhite">@Calc4Zero</div>
+
+
+<button @onclick="Calculon4">Display Console.writleline and also add 1+2 in html via C# Neat!</button>
+
+<div class="IcySegoeWhite">@DisplayText</div>
+
+
+
+
+
+@code{
+
+    private int Calc4Zero = 0;
+
+    public string DisplayText = null;
+  
+
+    private void Calculon4() {
+
+
+
+
+        int num1 = 1;
+        int num2 = 2;
+        DisplayText = ("Console Calculator in C#\n");
+
+
+        // Display title as the C# console calculator app.
+        Console.WriteLine(DisplayText);
+
+        Console.WriteLine("------------------------\n");
+
+
+        Calc4Zero = num1 + num2;
+
+
+
+    }
+}
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+
+<a class="IcySegoeWhite"href="https://github.com/IsyankarCoder/BlazorDemo/blob/master/Pages/Calculator.razor">github link for another calc example</a>
+
+
+<div class="IcySegoeWhite">Calculator drno....</div>
+
+<button @onclick="Calculon5">This Button Activiates Calculon5 in Console!</button>
+
+
+<div class="IcySegoeWhite">Below Will Be to Added to Display Calc in HTML!</div>
+
+
+
+<div class="IcySegoeWhite">@Text01</div>
+
+<div class="IcySegoeWhite">@Text02</div>
+
+
+<div class="IcySegoeWhite">@Text03</div>
+
+
+  <input placeholder="Enter First Number" bind="@num1" />
+<div class="IcySegoeWhite">@Text04</div>
+
+
+  <input placeholder="Enter Second Number" bind="@num2" />
+
+<button @onclick="Calculon5">Add</button>
+
+
+<div class="IcySegoeWhite">@Text05</div>
+
+
+<input readonly bind="@YourResult01" />
+
+
+
+
+@code{
+    string num1;
+    string num2;
+    string Text01 = ("Console Calculator in C#\n");
+    string Text02 = ("------------------------\n");
+    string Text03 = ("Type a Number In Box 1");
+    string Text04 = ("Type a Number in Box 2");
+    string Text05 = ("Result");
+    string YourResult01 = null;
+
+
+
+
+
+
+
+
+    private void Calculon5() {
+
+        int num1 = 0;
+        int num2 = 0;
+
+        YourResult01 = ($"Your result: {num1} + {num2} = ");
+
+
+        // Display title as the C# console calculator app.
+        Console.WriteLine(Text01);
+        Console.WriteLine(Text02);
+
+        // Ask the user to type the first number.
+        Console.WriteLine(Text03);
+        num1 = Convert.ToInt32(Console.ReadLine());
+
+        // Ask the user to type the second number.
+        Console.WriteLine(Text04);
+        num2 = Convert.ToInt32(Console.ReadLine());
+
+
+        // Ask the user to choose an option.
+        Console.WriteLine("Choose an option from the following list:");
+        Console.WriteLine("\ta - Add");
+        Console.WriteLine("\ts - Subtract");
+        Console.WriteLine("\tm - Multiply");
+        Console.WriteLine("\td - Divide");
+        Console.Write("Your option? ");
+
+        // Use a switch statement to do the math.
+        switch (Console.ReadLine())
+        {
+            case "a":
+                Console.WriteLine(YourResult01 + (num1 + num2));
+                break;
+            case "s":
+                Console.WriteLine($"Your result: {num1} - {num2} = " + (num1 - num2));
+                break;
+            case "m":
+                Console.WriteLine($"Your result: {num1} * {num2} = " + (num1 * num2));
+                break;
+            case "d":
+                Console.WriteLine($"Your result: {num1} / {num2} = " + (num1 / num2));
+                break;
+        }
+        // Wait for the user to respond before closing.
+        Console.Write("Press any key to close the Calculator console app...");
+        Console.ReadKey();
+
+
+
+
+
+    }
+     
+
+
+
+
+}
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+<div class="IcySegoeWhite">Basic Calculator Demo Using Blazor</div>
+
+<a class="IcySegoeWhite" href="https://github.com/IsyankarCoder/BlazorDemo/blob/master/Pages/Calculator.razor">Link to Github for code!</a>
+
+<div class="IcySegoeWhite">This took a bit of code tweaking from the github site but i got it to work Yay! a basic adding functional calc with Blazor Neat!</div>
+<div class="IcySegoeWhite">Changing the at onclick and at bind also making the input for final result as just a div class display!</div>
+<div class="IcySegoeWhite">I also Easily added some Extra Calc Features Subtract Multiply and Divide that actually work woah!</div>
+
+<a href="https://freestocktextures.com/texture/silver-brick-wall,357.html">Source for Texture</a>
+
+
+<div class="IcySegoeWhite containerCalc">
+    
+    <img class="shadow"src="/SilverWallVertical.png">
+ 
+   <div>
+    <input type="number"class="" id="a"placeholder="Enter First Number" @bind="@num11" />
+
+    <input type="number"class="" id ="b"placeholder="Enter Second Number" @bind="@num22" />
+    
+    <button class=""@onclick="@AddNumbers">Add (+)</button>
+    <button class=""@onclick="@SubtractNumbers">Subtract (-)</button>
+    <button class=""@onclick="@DivideNumbers">Divide (/)</button>
+    <button class=""@onclick="@MultiplyNumbers">Multiply (/)</button>
+    
+   
+    <div class=""style="font-size:200%;">Total =@finalResult </div>
+    </div>
+    
+   
+       
+</div>
+
+@functions
+{
+    string num11;
+    string num22;
+    string finalResult;
+
+
+    void AddNumbers()
+    {
+        finalResult = (Convert.ToDouble(num11) + Convert.ToDouble(num22)).ToString();
+    }
+
+    void SubtractNumbers()
+    {
+        finalResult = (Convert.ToDouble(num11) - Convert.ToDouble(num22)).ToString();
+    }
+
+    void DivideNumbers()
+    {
+        finalResult = (Convert.ToDouble(num11) / Convert.ToDouble(num22)).ToString();
+    }
+
+    void MultiplyNumbers()
+    {
+        finalResult = (Convert.ToDouble(num11) * Convert.ToDouble(num22)).ToString();
+    }
+
+
+
+
+
+
+}
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+
+<a class="IcySegoeWhite" href="https://github.com/IsyankarCoder/BlazorDemo/blob/master/Pages/Calculator.razor">Link to Github for code!</a>
+<div class="IcySegoeWhite">12/3/21 3:07PM</div>
+<div class="IcySegoeWhite">Whatll we do tnight brain....</div>
+
+<div class="IcySegoeWhite">Calculone Part 6: The Revenege of the Female Robot Army on the....</div>
+<div class="IcySegoeWhite">This is just a test to Make Buttons go to input box for calculator 1 and 2.</div>
+<div class="IcySegoeWhite">How to Create A Multiple Bind Function so that all the Button Numbers and input Show up</div>
+<div class="IcySegoeWhite">Then to Create a single Number Box to show function</div>
+<div class="IcySegoeWhite">So if i change input to number and leave 1 and 2 as buttons ya...</div>
+<div class="IcySegoeWhite">This is looking along the routes of creating Multiple fields to attach thru c sharp somehow ?</div>
+<div class="IcySegoeWhite">12/8/21 8:57PM</div>
+<div class="IcySegoeWhite">got some working buttons using a blazor tutorial is a tmeporary interesting start to adding button functionality!</div>
+<div class="IcySegoeWhite">Calculon Is getting there Made a way to elimanate some of the code by using basic html input and to create two Main to</div>
+<div class="IcySegoeWhite">instead of buttons Main for each number i can put 10 or many as i desire per Main Function Neat!</div>
+<div class="IcySegoeWhite">12/8/21 9:38PM</div>
+<div class="IcySegoeWhite">Blah Blah Blah!</div>
+<div class="IcySegoeWhite">i dont know how to make the clear button tie into the input boxes....</div>
+<div class="IcySegoeWhite">I actually Made a Working Clear button somehow lol..</div>
+<div class="IcySegoeWhite"> clearNumbers = (numberSource)=null;</div>
+<div class="IcySegoeWhite"> relating this to the inputs also</div>
+<div class="IcySegoeWhite">Other Goals to Complete Fully Functional Calculon Ultimate!</div>
+<div class="IcySegoeWhite">1. Multiple Input Through Buttons to Input, Only one Number will show through buttons Should Cascade.</div>
+<div class="IcySegoeWhite">2. Making a Single Input Box that Can Do Math Similiar to a Regular Calculator and Multiple Equations. </div>
+<div class="IcySegoeWhite">3. Making More Advanced Classes for Add multiply subtract divide equal Function instead of auto equate.</div>
+<div class="IcySegoeWhite">4. This is are hard still have to Study more to create!</div>
+<a href="https://freestocktextures.com/texture/silver-brick-wall,357.html">Source for Texture</a>
+<a  href="https://stackoverflow.com/questions/66697977/call-multiple-functions-using-onclick-in-blazor-web-pages">Useful code piece to add Multiple Main to onclick!</a>
+
+
+<div class="containerCalc" >
+    
+     <img class="shadow"src="/SilverWallVertical.png">
+ 
+  
+    
+
+ 
+        <div class="IcySegoeWhite">You Can Type Your Number Via KeyBoard or Use buttons for basic 1 Number Input!
+            </div>
+          <div class="IcySegoeWhite FirstText">First Number Box
+       
+        </div>
+        
+        <input type="number"class="CalcBoxInput " id="Box1"placeholder="Enter First Number" @bind="@numberSource"/>
+          <div class="IcySegoeWhite">Second Number Box
+        </div>
+        
+        <input type="number"class="CalcBoxInput" id ="Box2"placeholder="Enter Second Number"  @bind="@numberSource2"/>
+    
+        
+        <div class="IcySegoeWhite">
+            <button class="Calcbtn"@onclick="@AddNumbers1">Add (+)</button>
+            <button class="Calcbtn"@onclick="@SubtractNumbers1">Subtract (-)</button>
+            <button class="Calcbtn"@onclick="@DivideNumbers1">Divide (/)</button>
+            <button class="Calcbtn"@onclick="@MultiplyNumbers1">Multiply (*)</button>
+        </div>
+        
+        
+  
+        <div class="IcySegoeWhite">Input For First Number Box
+        </div>
+        
+        <div>
+
+          @for (var i = 0; i <= 9; i++)
+             { var NumberID = i;
+                    <button class="Calcbtn"@onclick="() => AllNumbers(NumberID)">@NumberID</button>
+             }
+
+        </div>
+   
+         <div class="IcySegoeWhite">Input For Second Number Box
+         </div>
+
+         <div>
+          @for (var j = 0; j <= 9; j++)
+                { var Number2ID2 = j;
+                    <button class="Calcbtn"@onclick="() => AllNumbers2(Number2ID2)">@Number2ID2</button>
+    
+                }
+   
+         </div>
+        
+        
+        
+        <button class="Calcbtn" @onclick="@ClearNumbers">Clear</button>
+       
+
+
+
+
+         <div class="IcySegoeWhite">Total Box
+         </div>
+
+
+
+    <input class="CalcBoxInput" style="font-size:200%;" placeholder="Total"@bind="@finalResult1">
+    
+</div>
+    
+   
+       
+
+ 
+           
+@code
+{
+
+    string finalResult1;
+    string numberSource;
+    string numberSource2;
+    string clearNumbers;
+
+
+
+    public void AddNumbers1()
+    {
+        finalResult1 = (Convert.ToDouble(numberSource) + Convert.ToDouble(numberSource2)).ToString();
+    }
+
+    public void SubtractNumbers1()
+    {
+        finalResult1 = (Convert.ToDouble(numberSource) - Convert.ToDouble(numberSource2)).ToString();
+    }
+
+    public void DivideNumbers1()
+    {
+        finalResult1 = (Convert.ToDouble(numberSource) / Convert.ToDouble(numberSource2)).ToString();
+    }
+
+    public void MultiplyNumbers1()
+    {
+        finalResult1 = (Convert.ToDouble(numberSource) * Convert.ToDouble(numberSource2)).ToString();
+    }
+
+    void AllNumbers(int ID)
+    {
+        numberSource = $"{ID}";
+    }
+    void AllNumbers2(int ID2)
+    {
+        numberSource2 = $"{ID2}";
+    }
+        void ClearNumbers()
+    {
+        clearNumbers =numberSource=null;
+        clearNumbers = numberSource2=null;
+         clearNumbers = finalResult1=null;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br/><svg width="400" height="20">
+  <rect width="400" height="20" style="fill:rgb(40 40 83);" />
+</svg>
+
+
+
+
+
+
+
+
+
+<div class="IcySegoeWhite">Code Chunks to build with!</div>
+
+     <form oninput="@finalResult1">
+            <input type="number" id="" placeholder="Enter First Number" @bind="@numberSource">
+            <input type="number" id=""placeholder="Enter Second Number" @bind="@numberSource2" >
+            <output name="" for="">=@finalResult1</output>
+            </form>
+
+
+ <form oninput="x=a+b">
+<input type="range" id="a" value="50">
+<input type="number" id="b" value="25">
+<output name="x" for="a b"></output>
+</form>
+
+
+
+
+
+<div class="IcySegoeWhite">Random box with number for to add to Calculon!</div>
+
+ <label for="FNumber">Enter First Number!</label>
+ 
+
+ <input type="number" id="FNumber" name="FNumber">
+
+

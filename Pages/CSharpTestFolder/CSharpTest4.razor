@@ -1,0 +1,94 @@
+﻿@page "/CSharpTest4"
+
+@using FrostSteelCorporation;
+@using FrostSteelCorporation.CSharp;
+@using System;
+@using System.Drawing;
+@using System.Drawing.Drawing2D;
+@using System.Windows;
+@using Microsoft.AspNetCore.Components.Web;
+
+<div class="IcySegoeWhite">A test For Dual Canvas Per Page and Via Any Page</div>
+<div class="IcySegoeWhite">Works butt Where within the Class references in animate master was the Canvas interference</div>
+
+<div id="MainCanvas" class="CanvasIndexMain" >
+
+<BECanvas Width="650" Height="400" @ref="MaincanvasReference" ></BECanvas>
+
+</div>
+
+<div id="MainCanvas2" class="CanvasIndexMain2" >
+
+<BECanvas Width="650" Height="400" @ref="MaincanvasReference2" ></BECanvas>
+
+</div>
+
+
+@code{
+    private Canvas2DContext context;
+
+    protected BECanvasComponent MaincanvasReference;
+
+    string MainText=("Frost Steel Corporation");
+    object backgroundcolor = "#000000";
+    private Canvas2DContext context2;
+
+    protected BECanvasComponent MaincanvasReference2;
+
+    string MainText2=("Frost Steel Corporation");
+    object backgroundcolor2 = "#000000";
+
+
+
+    void OnAfterRenderAsync() { }
+
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+              {
+        
+     
+        
+        this.context = await MaincanvasReference.CreateCanvas2DAsync();
+      
+     
+                await context.SetFillStyleAsync("#042069");
+       
+                await context.FillRectAsync(30, 150, 300, 100);
+      
+        
+
+              await context.SetFontAsync("48px Segoe Script");
+              await context.SetStrokeStyleAsync ("white");
+      
+              await context.StrokeTextAsync(MainText, 10, 100);
+        
+              
+              this.context2 = await MaincanvasReference2.CreateCanvas2DAsync();
+      
+     
+                await context2.SetFillStyleAsync("#042069");
+       
+                await context2.FillRectAsync(30, 150, 300, 100);
+      
+        
+
+              await context2.SetFontAsync("48px Segoe Script");
+              await context2.SetStrokeStyleAsync ("white");
+      
+              await context2.StrokeTextAsync(MainText2, 10, 100);
+   
+
+             }
+
+     
+        
+     
+        
+  
+
+             
+}
+
+
+

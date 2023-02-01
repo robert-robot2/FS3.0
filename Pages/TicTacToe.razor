@@ -1,0 +1,52 @@
+﻿@page "/TicTacToe"
+@using FrostSteelCorporation.TicTacToe.Models;
+
+
+<h1 class="IcySegoeWhite">Tic Tac Toe!</h1>
+
+<div class="IcySegoeWhite">Hi!</div>
+
+<div class="IcySegoeWhite">In Development</div>
+
+<div class="IcySegoeWhite">Source::Neat!</div>
+
+<a class="IcySegoeWhite"href="https://github.com/exceptionnotfound/BlazorWasmTicTacToe">Github TicTacToe</a>
+
+
+
+
+@code {
+
+    
+    
+    
+
+    GameBoard board = new GameBoard();
+    }
+
+
+
+@if (!board.GameComplete)
+{
+    <h2>@board.CurrentTurn's Turn!</h2>
+}
+else
+{
+    <h2>@board.GetGameCompleteMessage() <button class="btn btn-success" @onclick="@(() => board.Reset())">Reset</button></h2>
+}
+
+<div class="board"style="z-index:3;">
+    @for (int i = 0; i < 3; i++)
+    {
+        <div class="column"style="z-index:3;">
+            @for (int j = 0; j < 3; j++)
+            {
+                int x = i;
+                int y = j;
+                <div class="gamepiece 
+                         @board.Board[i,j].Style.ToString().ToLower()" @onclick="@(() => board.PieceClicked(x,y))"
+                     style="@(board.IsGamePieceAWinningPiece(i, j)? "opacity: 1.0" : "") z-index:3;"></div>
+            }
+        </div>
+    }
+</div>
